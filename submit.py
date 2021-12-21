@@ -26,10 +26,10 @@ elif args.reseach:
 elif cpu:
     text = text.replace("#SBATCH --gres=gpu:1          ## GPUs", "")
     text = text.replace("device", "cpu")
-elif not args.lianglab:
-    text = text.replace("#SBATCH -p lianglab", "")
+elif args.lianglab:
     text = text.replace("device", "lianglab")
 else:
+    text = text.replace("#SBATCH -p lianglab", "")
     text = text.replace("device", "none")
 
 path = "./tmp.sh"
