@@ -15,8 +15,6 @@ from resnet import ResNet18
 
 if not os.path.isdir('data'):
     os.mkdir('data')
-if not os.path.isdir('log'):
-    os.mkdir('log')
 if not os.path.isdir('checkpoint'):
     os.mkdir('checkpoint')
 

@@ -9,7 +9,6 @@ parser.add_argument('--wacc', action='store_true')
 parser.add_argument('--research', action='store_true')
 
 args = parser.parse_args()
-cpu = args.cpu
 
 read_file = "./script.sh"
 
@@ -23,7 +22,7 @@ if args.wacc:
 elif args.research:
     text = text.replace("#SBATCH -p lianglab", "#SBATCH -p research")
     text = text.replace("device", "research")
-elif cpu:
+elif args.cpu:
     text = text.replace("#SBATCH --gres=gpu:1          ## GPUs", "")
     text = text.replace("device", "cpu")
 elif args.lianglab:

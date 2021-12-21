@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 #
-#SBATCH --output=./log/l_device_%j.log
-#SBATCH --error=./log/e_device_%j.log
+#SBATCH --output=./l_device_%j.log
+#SBATCH --error=./e_device_%j.log
 #***SBATCH --partition=batch_default ***
 # 
 # 1 node, 1 CPU per node (total 1 CPU), wall clock time of hours
