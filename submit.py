@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser("Training model")
 parser.add_argument('--cpu', action='store_true')
 parser.add_argument('--lianglab', action='store_true')
 parser.add_argument('--wacc', action='store_true')
-parser.add_argument('--reseach', action='store_true')
+parser.add_argument('--research', action='store_true')
 
 args = parser.parse_args()
 cpu = args.cpu
@@ -20,8 +20,8 @@ if args.wacc:
     text = text.replace("#SBATCH -p lianglab", "#SBATCH -p wacc")
     text = text.replace("device", "wacc")
     text = text.replace("#SBATCH -t 256:00:00          ## Walltime", "#SBATCH -t 1:00:00          ## Walltime")
-elif args.reseach:
-    text = text.replace("#SBATCH -p lianglab", "#SBATCH -p reseach")
+elif args.research:
+    text = text.replace("#SBATCH -p lianglab", "#SBATCH -p research")
     text = text.replace("device", "research")
 elif cpu:
     text = text.replace("#SBATCH --gres=gpu:1          ## GPUs", "")
