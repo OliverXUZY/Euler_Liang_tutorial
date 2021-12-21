@@ -9,7 +9,6 @@ parser.add_argument('--wacc', action='store_true')
 parser.add_argument('--reseach', action='store_true')
 
 args = parser.parse_args()
-config_file_path = args.config
 cpu = args.cpu
 
 read_file = "./script.sh"
