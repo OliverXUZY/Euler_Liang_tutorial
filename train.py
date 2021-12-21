@@ -90,9 +90,10 @@ def train(epoch):
         _, predicted = outputs.max(1)
         total += targets.size(0)
         correct += predicted.eq(targets).sum().item()
-        run_time = (timeit.default_timer() - start_time) / 60.0
-        print('[%3d/%3d] (%.2f m) Train Loss: %.3f | Acc: %.3f%% (%d/%d)'
-                  % (batch_idx, len(trainloader), run_time, train_loss/(batch_idx+1), 100.*correct/total, correct, total))
+        if batch_idx % 20 == 0:
+            run_time = (timeit.default_timer() - start_time) / 60.0
+            print('[%3d/%3d] (%.2f m) Train Loss: %.3f | Acc: %.3f%% (%d/%d)'
+                    % (batch_idx, len(trainloader), run_time, train_loss/(batch_idx+1), 100.*correct/total, correct, total))
 
 
 def test(epoch):
@@ -111,9 +112,10 @@ def test(epoch):
             _, predicted = outputs.max(1)
             total += targets.size(0)
             correct += predicted.eq(targets).sum().item()
-            run_time = (timeit.default_timer() - start_time) / 60.0
-            print('[%3d/%3d] (%.2f m) Test Loss: %.3f | Acc: %.3f%% (%d/%d)'
-                  % (batch_idx, len(testloader), run_time, 100.*correct/total, correct, total))
+            if batch_idx % 20 == 0:
+                run_time = (timeit.default_timer() - start_time) / 60.0
+                print('[%3d/%3d] (%.2f m) Test Loss: %.3f | Acc: %.3f%% (%d/%d)'
+                    % (batch_idx, len(testloader), run_time, test_loss/(batch_idx+1), 100.*correct/total, correct, total))
 
     # Save checkpoint.
     acc = 100.*correct/total
