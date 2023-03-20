@@ -19,13 +19,14 @@
 #SBATCH --output=./log/array/python_array_job_slurm_%A_%a.out
 source ~/.bashrc
 
-sleep 5
+sleep 3
 echo 5
 echo "SLURM_JOBID: " $SLURM_JOBID
 echo "SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID
 echo "SLURM_ARRAY_JOB_ID: " $SLURM_ARRAY_JOB_ID
 
-#*** run python code below
+#*** for testing CUDA, run python code below
+echo "======== testing CUDA available ========"
 python - << EOF
 import torch
 print(torch.cuda.is_available())
@@ -34,3 +35,9 @@ print(torch.cuda.current_device())
 print(torch.cuda.device(0))
 print(torch.cuda.get_device_name(0))
 EOF
+
+echo "======== testing different inputs ========"
+# for take different input from different lines of input_file_list.txt
+echo $( awk "NR==$SLURM_ARRAY_TASK_ID" input_file_list.txt )
+
+
