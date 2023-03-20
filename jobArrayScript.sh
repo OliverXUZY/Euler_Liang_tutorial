@@ -25,3 +25,12 @@ echo "SLURM_JOBID: " $SLURM_JOBID
 echo "SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID
 echo "SLURM_ARRAY_JOB_ID: " $SLURM_ARRAY_JOB_ID
 
+#*** run python code below
+python - << EOF
+import torch
+print(torch.cuda.is_available())
+print(torch.cuda.device_count())
+print(torch.cuda.current_device())
+print(torch.cuda.device(0))
+print(torch.cuda.get_device_name(0))
+EOF
