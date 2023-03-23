@@ -8,3 +8,6 @@ This is a tutorial about running ResNet18 on CIFAR10 using PyTorch on Euler for 
 
 run job array:
 `sbatch --array=1-2 jobArrayScript.sh`
+
+* interaction job:
+`srun -p lianglab --time=240:00:00 --gres=gpu:a100:1 --mem 60GB -c 12 --pty -u zsh -i`
